@@ -1,0 +1,514 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Reinscripciones" EntityNamespace="DBEscolar" ContextNamespace="DBEscolar" Class="DBEscolarDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=mssql.cobaes.edu.mx;Initial Catalog=Reinscripciones;Persist Security Info=True;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="ReinscripcionesConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.TiposDeIntereses" Member="TipoDeInteres">
+    <Type Name="TipoDeInteres">
+      <Column Name="TipoDeInteresID" Type="System.Byte" DbType="TinyInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="InteresDet" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="Interes" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vwRPTPagosEncabezado" Member="vwRPTPagosEncabezados">
+    <Type Name="vwRPTPagosEncabezado">
+      <Column Name="AlumnoID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Matricula" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
+      <Column Name="NombreCompleto" Type="System.String" DbType="VarChar(152) NOT NULL" CanBeNull="false" />
+      <Column Name="Zona" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="Plantel" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="PlantelTXT" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Turno" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="Semestre" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="Grupo" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="PagoID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Folio" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Referencia" Type="System.String" DbType="Char(21) NOT NULL" CanBeNull="false" />
+      <Column Name="Total" Type="System.Decimal" DbType="SmallMoney NOT NULL" CanBeNull="false" />
+      <Column Name="Ciclo" Type="System.String" DbType="Char(5) NOT NULL" CanBeNull="false" />
+      <Column Name="Estatus" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="Fecha" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vwRPTPagosDetalle" Member="vwRPTPagosDetalles">
+    <Type Name="vwRPTPagosDetalle">
+      <Column Name="DetalleID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PagoID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Clave" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="Concepto" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Monto" Type="System.Decimal" DbType="SmallMoney NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vwRPTEstadisticaAlumnos01" Member="vwRPTEstadisticaAlumnos01s">
+    <Type Name="vwRPTEstadisticaAlumnos01">
+      <Column Name="PlantelID" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="Zona" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="Plantel" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="PlantelNombre" Type="System.String" DbType="VarChar(213)" CanBeNull="true" />
+      <Column Name="Turno" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="Semestre" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="Grupo" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="Matricula" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
+      <Column Name="NombreCompleto" Type="System.String" DbType="VarChar(152) NOT NULL" CanBeNull="false" />
+      <Column Name="Estatus" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vwRPTReinscripcion" Member="vwRPTReinscripcions">
+    <Type Name="vwRPTReinscripcion">
+      <Column Name="Zona" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="Plantel" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="PlantelNombre" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Turno" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="Semestre" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="Grupo" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="Matricula" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
+      <Column Name="NombreCompleto" Type="System.String" DbType="VarChar(152) NOT NULL" CanBeNull="false" />
+      <Column Name="CURP" Type="System.String" DbType="VarChar(18) NOT NULL" CanBeNull="false" />
+      <Column Name="Sexo" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="FechaNac" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Telefono" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Celular" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Correo" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Calle" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Numero" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CodigoPostal" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ColoniaTXT" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Municipio" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="SecundariaTXT" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="NombrePadre" Type="System.String" DbType="VarChar(152)" CanBeNull="true" />
+      <Column Name="PadreTelefono" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="PadreOcupacion" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="PadreEmpresa" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="NombreMadre" Type="System.String" DbType="VarChar(152)" CanBeNull="true" />
+      <Column Name="MadreTelefono" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="MadreOcupacion" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="MadreEmpresa" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="EstadoCivil" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Beca" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Ingreso" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Casa" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ViveCon" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Parentesco" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Interes1" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Interes2" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TipoDeSangre" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Ocupacion" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CURPs" Member="CURPs">
+    <Type Name="CURP">
+      <Column Name="CURP" Member="curp" Type="System.String" DbType="Char(18) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ApPaterno" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ApMaterno" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Sexo" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="FechaNacimiento" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Nacionalidad" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Estado" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Fuente" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vwRPTPreInscripcion" Member="vwRPTPreInscripcions">
+    <Type Name="vwRPTPreInscripcion">
+      <Column Name="Zona" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="Plantel" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="PlantelNombre" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Turno" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="Folio" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
+      <Column Name="NombreCompleto" Type="System.String" DbType="VarChar(152) NOT NULL" CanBeNull="false" />
+      <Column Name="CURP" Type="System.String" DbType="VarChar(18) NOT NULL" CanBeNull="false" />
+      <Column Name="Sexo" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="FechaNac" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Telefono" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Celular" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Correo" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Calle" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Numero" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CodigoPostal" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ColoniaTXT" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Municipio" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="SecundariaTXT" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="NombrePadre" Type="System.String" DbType="VarChar(152)" CanBeNull="true" />
+      <Column Name="PadreTelefono" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="PadreOcupacion" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="PadreEmpresa" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="NombreMadre" Type="System.String" DbType="VarChar(152)" CanBeNull="true" />
+      <Column Name="MadreTelefono" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="MadreOcupacion" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="MadreEmpresa" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="EstadoCivil" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Beca" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Ingreso" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Casa" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ViveCon" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Parentesco" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Interes1" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Interes2" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TipoDeSangre" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Ocupacion" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Alergias" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DIMSS" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="DISSSTE" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="DSeguroPopular" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="DPrivado" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="NumIntegrantes" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="TienePC" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="TieneInternet" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="FechaDeAlta" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Alumnos" Member="Alumnos">
+    <Type Name="Alumno">
+      <Column Name="AlumnoID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PlantelID" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="Turno" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="Semestre" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="Grupo" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="Matricula" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
+      <Column Name="ApPaterno" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ApMaterno" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CURP" Type="System.String" DbType="VarChar(18) NOT NULL" CanBeNull="false" />
+      <Column Name="Sexo" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="FechaNac" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="EntidadFed" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Telefono" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Celular" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Correo" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Calle" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Numero" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CodigoPostal" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ColoniaID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ColoniaTXT" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="EstadoCivil" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="Ocupacion" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="TipoBeca" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="TipoSangre" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="Alergias" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="EnfermedadesCronicas" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CapacidadesDiferentes" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DIMSS" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="DISSSTE" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="DSeguroPopular" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="DPrivado" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IntPers1" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="IntPersOtros1" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="IntPers2" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="IntPersOtros2" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ViveCon" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="ViveConTutor" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="TipoVivienda" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="NumIntegrantes" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="IngresoMensual" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="TienePC" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="TieneInternet" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="SecundariaID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SecundariaTXT" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="PadreApPaterno" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PadreApMaterno" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PadreNombre" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PadreTelefono" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="PadreOcupacion" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="PadreEmpresa" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MadreApPaterno" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MadreApMaterno" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MadreNombre" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MadreTelefono" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="MadreOcupacion" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="MadreEmpresa" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Estatus" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="FechaDeAlta" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="FechaDeModif" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PreInscritos" Member="PreInscritos">
+    <Type Name="PreInscrito">
+      <Column Name="PreInscritoID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AlumnoID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PlantelID" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="Turno" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="Folio" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Ciclo" Type="System.String" DbType="Char(5) NOT NULL" CanBeNull="false" />
+      <Column Name="Matricula" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+      <Column Name="ApPaterno" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ApMaterno" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CURP" Type="System.String" DbType="VarChar(18) NOT NULL" CanBeNull="false" />
+      <Column Name="Sexo" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="FechaNac" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="EntidadFed" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Telefono" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Celular" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Correo" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Calle" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Numero" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CodigoPostal" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ColoniaID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ColoniaTXT" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="EstadoCivil" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="Ocupacion" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="TipoBeca" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="TipoSangre" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="Alergias" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="EnfermedadesCronicas" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CapacidadesDiferentes" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DIMSS" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="DISSSTE" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="DSeguroPopular" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="DPrivado" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IntPers1" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="IntPersOtros1" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="IntPers2" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="IntPersOtros2" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ViveCon" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="ViveConTutor" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="TipoVivienda" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="NumIntegrantes" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="IngresoMensual" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="TienePC" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="TieneInternet" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="SecundariaID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SecundariaTXT" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="PadreApPaterno" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PadreApMaterno" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PadreNombre" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PadreTelefono" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="PadreOcupacion" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="PadreEmpresa" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MadreApPaterno" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MadreApMaterno" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MadreNombre" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MadreTelefono" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="MadreOcupacion" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="MadreEmpresa" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Estatus" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="FechaDeAlta" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="FechaDeModif" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Planteles" Member="Plantels">
+    <Type Name="Plantel">
+      <Column Name="PlantelID" Type="System.Byte" DbType="TinyInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MunicipioID" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="Zona" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="Plantel" Member="plantel" Storage="_Plantel" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Director" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="TurnoMatutino" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="TurnoVespertino" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="TurnoNocturno" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="LimiteMatutino" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="LimiteVespertino" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="LimiteNocturno" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="EsEmsad" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CalificacionesCompletas" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Activo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AlumnosReinsc" Member="AlumnoReinscs">
+    <Type Name="AlumnoReinsc">
+      <Column Name="PlantelID" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="Turno" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="Grupo" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="Semestre" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="Matricula" Type="System.String" DbType="Char(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CURP" Type="System.String" DbType="Char(18) NOT NULL" CanBeNull="false" />
+      <Column Name="ApPaterno" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ApMaterno" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Sexo" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="FechaDeNac" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Tipo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Colonias" Member="Colonias">
+    <Type Name="Colonia">
+      <Column Name="ColoniaID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CodigoPostal" Type="System.String" DbType="Char(5) NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Tipo" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="MunicipioID" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="LocalidadID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SepomexID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Zona" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Association Name="Localidad_Colonia" Member="Localidad" ThisKey="LocalidadID" OtherKey="LocalidadID" Type="Localidad" IsForeignKey="true" />
+      <Association Name="Municipio_Colonia" Member="Municipio" ThisKey="MunicipioID" OtherKey="MunicipioID" Type="Municipio" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Localidades" Member="Localidads">
+    <Type Name="Localidad">
+      <Column Name="LocalidadID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MunicipioID" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="Clave" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Association Name="Localidad_Colonia" Member="Colonias" ThisKey="LocalidadID" OtherKey="LocalidadID" Type="Colonia" />
+      <Association Name="Localidad_Secundaria" Member="Secundarias" ThisKey="LocalidadID" OtherKey="LocalidadID" Type="Secundaria" />
+      <Association Name="Municipio_Localidad" Member="Municipio" ThisKey="MunicipioID" OtherKey="MunicipioID" Type="Municipio" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Municipios" Member="Municipios">
+    <Type Name="Municipio">
+      <Column Name="MunicipioID" Type="System.Byte" DbType="TinyInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Municipio_Colonia" Member="Colonias" ThisKey="MunicipioID" OtherKey="MunicipioID" Type="Colonia" />
+      <Association Name="Municipio_Localidad" Member="Localidads" ThisKey="MunicipioID" OtherKey="MunicipioID" Type="Localidad" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Secundarias" Member="Secundarias">
+    <Type Name="Secundaria">
+      <Column Name="SecundariaID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ClaveCCT" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Turno" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="LocalidadID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Director" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Domicilio" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Colonia" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Association Name="Localidad_Secundaria" Member="Localidad" ThisKey="LocalidadID" OtherKey="LocalidadID" Type="Localidad" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PlantelesEnReinscripcion" Member="PlantelesEnReinscripcions">
+    <Type Name="PlantelesEnReinscripcion">
+      <Column Name="PlantelID" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="FechaInicial" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="FechaLimite" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Alumnos_Virtual" Member="Alumnos_Virtuals">
+    <Type Name="Alumnos_Virtual">
+      <Column Name="AlumnoID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PlantelID" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="Turno" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="Semestre" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="Grupo" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="Matricula" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
+      <Column Name="ApPaterno" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ApMaterno" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CURP" Type="System.String" DbType="VarChar(18) NOT NULL" CanBeNull="false" />
+      <Column Name="Sexo" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="FechaNac" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="EntidadFed" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Telefono" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Celular" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Correo" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Calle" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Numero" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CodigoPostal" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ColoniaID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ColoniaTXT" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="MunicipioID" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="Estatus" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="FechaDeAlta" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="FechaValida" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vwRPTPreInscripcionPV" Member="vwRPTPreInscripcionPVs">
+    <Type Name="vwRPTPreInscripcionPV">
+      <Column Name="Zona" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="Plantel" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="PlantelNombre" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Turno" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="Matricula" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
+      <Column Name="NombreCompleto" Type="System.String" DbType="VarChar(152) NOT NULL" CanBeNull="false" />
+      <Column Name="CURP" Type="System.String" DbType="VarChar(18) NOT NULL" CanBeNull="false" />
+      <Column Name="Sexo" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="FechaNac" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Telefono" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Celular" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Correo" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Calle" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Numero" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CodigoPostal" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ColoniaTXT" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Localidad" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Municipio" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Estatus" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="FechaDeAlta" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vwRPTEstSegInsc01" Member="vwRPTEstSegInsc01s">
+    <Type Name="vwRPTEstSegInsc01">
+      <Column Name="Zona" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="Plantel" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="Turno" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="PriN" Type="System.Int32" DbType="Int" CanBeNull="false" />
+      <Column Name="PriL" Type="System.Int32" DbType="Int" CanBeNull="false" />
+      <Column Name="PriV" Type="System.Int32" DbType="Int" CanBeNull="false" />
+      <Column Name="PriF" Type="System.Int32" DbType="Int" CanBeNull="false" />
+      <Column Name="PriP" Type="System.Int32" DbType="Int" CanBeNull="false" />
+      <Column Name="PriC" Type="System.Int32" DbType="Int" CanBeNull="false" />
+      <Column Name="PriT" Type="System.Int32" DbType="Int" CanBeNull="false" />
+      <Column Name="SegN" Type="System.Int32" DbType="Int" CanBeNull="false" />
+      <Column Name="SegL" Type="System.Int32" DbType="Int" CanBeNull="false" />
+      <Column Name="SegV" Type="System.Int32" DbType="Int" CanBeNull="false" />
+      <Column Name="SegF" Type="System.Int32" DbType="Int" CanBeNull="false" />
+      <Column Name="SegP" Type="System.Int32" DbType="Int" CanBeNull="false" />
+      <Column Name="SegC" Type="System.Int32" DbType="Int" CanBeNull="false" />
+      <Column Name="SegT" Type="System.Int32" DbType="Int" CanBeNull="false" />
+      <Column Name="TerN" Type="System.Int32" DbType="Int" CanBeNull="false" />
+      <Column Name="TerL" Type="System.Int32" DbType="Int" CanBeNull="false" />
+      <Column Name="TerV" Type="System.Int32" DbType="Int" CanBeNull="false" />
+      <Column Name="TerF" Type="System.Int32" DbType="Int" CanBeNull="false" />
+      <Column Name="TerP" Type="System.Int32" DbType="Int" CanBeNull="false" />
+      <Column Name="TerC" Type="System.Int32" DbType="Int" CanBeNull="false" />
+      <Column Name="TerT" Type="System.Int32" DbType="Int" CanBeNull="false" />
+      <Column Name="TotN" Type="System.Int32" DbType="Int" CanBeNull="false" />
+      <Column Name="TotL" Type="System.Int32" DbType="Int" CanBeNull="false" />
+      <Column Name="TotV" Type="System.Int32" DbType="Int" CanBeNull="false" />
+      <Column Name="TotF" Type="System.Int32" DbType="Int" CanBeNull="false" />
+      <Column Name="TotP" Type="System.Int32" DbType="Int" CanBeNull="false" />
+      <Column Name="TotC" Type="System.Int32" DbType="Int" CanBeNull="false" />
+      <Column Name="Total" Type="System.Int32" DbType="Int" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Reprobados_I" Member="Reprobados_Is">
+    <Type Name="Reprobados_I">
+      <Column Name="or_zona" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="or_plant" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="or_matric" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Incompletas" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Reprobadas" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Capacitacion" Member="Capacitacions">
+    <Type Name="Capacitacion">
+      <Column Name="PlantelID" Type="System.Byte" DbType="TinyInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Turno" Type="System.Byte" DbType="TinyInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Semestre" Type="System.Byte" DbType="TinyInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Grupo" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Capacitacion" Member="Capacitacion1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vwRPTEstadisticaPreInscritos01" Member="vwRPTEstadisticaPreInscritos011s">
+    <Type Name="vwRPTEstadisticaPreInscritos011">
+      <Column Name="Folio" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
+      <Column Name="PlantelID" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="Zona" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="Plantel" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="Estatus" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(152) NOT NULL" CanBeNull="false" />
+      <Column Name="CURP" Type="System.String" DbType="VarChar(18) NOT NULL" CanBeNull="false" />
+      <Column Name="Sexo" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="Turno" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="FechaNac" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="FechaDeAlta" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Ciclo" Type="System.String" DbType="Char(5) NOT NULL" CanBeNull="false" />
+      <Column Name="PreInscritoID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ColoniaTXT" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Localidad" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.spEXEGetFolioPreInscripcion" Method="spEXEGetFolioPreInscripcion">
+    <Parameter Name="PlantelID" Parameter="plantelID" Type="System.Byte" DbType="TinyInt" />
+    <Parameter Name="Ciclo" Parameter="ciclo" Type="System.String" DbType="Char(5)" />
+    <Parameter Name="FolioOUT" Parameter="folioOUT" Type="System.String" DbType="Char(10)" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.spEXEPagosCambiaEstatus" Method="spEXEPagosCambiaEstatus">
+    <Parameter Name="AlumnoID" Parameter="alumnoID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="PagoID" Parameter="pagoID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Estatus" Parameter="estatus" Type="System.Byte" DbType="TinyInt" />
+    <Parameter Name="Ciclo" Parameter="ciclo" Type="System.String" DbType="Char(5)" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>

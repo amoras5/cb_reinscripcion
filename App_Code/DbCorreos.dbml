@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="correos" Class="DbCorreosDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=mssql.cobaes.edu.mx;Initial Catalog=correos;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="correosConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.o365_activacion" Member="Correos">
+    <Type Name="Correos">
+      <Column Name="cuenta" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="matricula" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="passw" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="folio" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="situacion" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="fh_pw_presetear" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="fh_pw_generado" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="fh_acceso_a_activ" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="quien_reseteo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

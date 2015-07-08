@@ -1,0 +1,26 @@
+﻿body
+{
+    margin: 0px;
+    padding: 0px;
+    background-color: #CCFF99;
+}
+#MPWrapper
+{
+    width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: justify;
+}
+#MPWrapperPre
+{
+    width: 950px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: justify;
+}
+.formLabel
+{
+    text-align: right;
+    vertical-align: top;
+    font-weight: bold;
+}

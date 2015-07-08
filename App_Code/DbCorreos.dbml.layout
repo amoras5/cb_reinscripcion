@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="DbCorreos">
+  <DataContextMoniker Name="/DbCorreosDataContext" />
+  <nestedChildShapes>
+    <classShape Id="2509e4ae-46c7-41d6-8359-cf24cbb48c17" absoluteBounds="4.125, 1.875, 2, 2.5401025390625">
+      <DataClassMoniker Name="/DbCorreosDataContext/Correos" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b78de8a2-f992-4d33-a1e9-93e47e237d5c" absoluteBounds="4.14, 2.335, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

@@ -1,0 +1,300 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DBEstadisticas.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="DBEstadisticasStoreContainer">
+          <EntitySet Name="vwRPTParcial1XALU" EntityType="DBEstadisticas.Store.vwRPTParcial1XALU" store:Type="Tables" Schema="Escolar" />
+          <EntitySet Name="vwRPTParcial1XGPO" EntityType="DBEstadisticas.Store.vwRPTParcial1XGPO" store:Type="Tables" Schema="Escolar" />
+          <EntitySet Name="vwPlanteles" EntityType="DBEstadisticas.Store.vwPlanteles" store:Type="Views" store:Schema="Escolar" store:Name="vwPlanteles">
+            <DefiningQuery>SELECT
+      `vwPlanteles`.`idZona`, 
+      `vwPlanteles`.`idPlantel`, 
+      `vwPlanteles`.`Descripcion`, 
+      `vwPlanteles`.`EsEmsad`, 
+      `vwPlanteles`.`IdMunicipio`, 
+      `vwPlanteles`.`Activo`
+      FROM `vwPlanteles` AS `vwPlanteles`</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwRPTBitacora" EntityType="DBEstadisticas.Store.vwRPTBitacora" store:Type="Views" store:Schema="Escolar" store:Name="vwRPTBitacora">
+            <DefiningQuery>SELECT
+      `vwRPTBitacora`.`Z`, 
+      `vwRPTBitacora`.`P`, 
+      `vwRPTBitacora`.`Descripcion`, 
+      `vwRPTBitacora`.`Registros`, 
+      `vwRPTBitacora`.`Duracion`, 
+      `vwRPTBitacora`.`Ciclo`, 
+      `vwRPTBitacora`.`Fecha`
+      FROM `vwRPTBitacora` AS `vwRPTBitacora`</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+        <EntityType Name="vwRPTParcial1XALU">
+          <Key>
+            <PropertyRef Name="or_zona" />
+            <PropertyRef Name="or_plant" />
+            <PropertyRef Name="or_turno" />
+            <PropertyRef Name="or_semest" />
+            <PropertyRef Name="or_grupo" />
+            <PropertyRef Name="or_matric" />
+            <PropertyRef Name="Ciclo" />
+            <PropertyRef Name="Periodo" />
+          </Key>
+          <Property Name="or_zona" Type="utinyint" Nullable="false" />
+          <Property Name="or_plant" Type="utinyint" Nullable="false" />
+          <Property Name="or_turno" Type="utinyint" Nullable="false" />
+          <Property Name="or_semest" Type="utinyint" Nullable="false" />
+          <Property Name="or_grupo" Type="usmallint" Nullable="false" />
+          <Property Name="or_matric" Type="char" Nullable="false" MaxLength="10" />
+          <Property Name="Ciclo" Type="char" Nullable="false" MaxLength="5" />
+          <Property Name="Periodo" Type="utinyint" Nullable="false" />
+          <Property Name="Materias" Type="utinyint" Nullable="false" />
+          <Property Name="ReprobadasP1" Type="utinyint" Nullable="false" />
+          <Property Name="PromedioP1" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="Observaciones" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="NombreAlumno" Type="varchar" Nullable="false" MaxLength="120" />
+          <Property Name="NombrePlantel" Type="varchar" Nullable="false" MaxLength="120" />
+        </EntityType>
+        <EntityType Name="vwRPTParcial1XGPO">
+          <Key>
+            <PropertyRef Name="or_zona" />
+            <PropertyRef Name="or_plant" />
+            <PropertyRef Name="or_turno" />
+            <PropertyRef Name="or_semest" />
+            <PropertyRef Name="or_grupo" />
+            <PropertyRef Name="or_asigna" />
+            <PropertyRef Name="or_maest" />
+            <PropertyRef Name="Ciclo" />
+            <PropertyRef Name="Periodo" />
+          </Key>
+          <Property Name="or_zona" Type="utinyint" Nullable="false" />
+          <Property Name="or_plant" Type="usmallint" Nullable="false" />
+          <Property Name="or_turno" Type="utinyint" Nullable="false" />
+          <Property Name="or_semest" Type="utinyint" Nullable="false" />
+          <Property Name="or_grupo" Type="usmallint" Nullable="false" />
+          <Property Name="or_asigna" Type="usmallint" Nullable="false" />
+          <Property Name="or_maest" Type="uint" Nullable="false" />
+          <Property Name="Ciclo" Type="char" Nullable="false" MaxLength="5" />
+          <Property Name="Periodo" Type="utinyint" Nullable="false" />
+          <Property Name="Alumnos" Type="uint" Nullable="false" />
+          <Property Name="Clases" Type="utinyint" Nullable="false" />
+          <Property Name="PromAsist" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="PromAsig" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="Reprobados" Type="uint" Nullable="false" />
+          <Property Name="NombreAsig" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="NombreMaest" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="NombrePlantel" Type="varchar" Nullable="false" MaxLength="200" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'Escolar.vwPlanteles' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="vwPlanteles">
+          <Key>
+            <PropertyRef Name="idZona" />
+            <PropertyRef Name="idPlantel" />
+          </Key>
+          <Property Name="idZona" Type="int" Nullable="false" />
+          <Property Name="idPlantel" Type="int" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="100" />
+          <Property Name="EsEmsad" Type="tinyint" />
+          <Property Name="IdMunicipio" Type="utinyint" />
+          <Property Name="Activo" Type="utinyint" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'Escolar.vwRPTBitacora' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="vwRPTBitacora">
+          <Key>
+            <PropertyRef Name="Z" />
+            <PropertyRef Name="P" />
+            <PropertyRef Name="Ciclo" />
+          </Key>
+          <Property Name="Z" Type="utinyint" Nullable="false" />
+          <Property Name="P" Type="utinyint" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="100" />
+          <Property Name="Registros" Type="int" Nullable="false" />
+          <Property Name="Duracion" Type="double" />
+          <Property Name="Ciclo" Type="varchar" Nullable="false" MaxLength="5" />
+          <Property Name="Fecha" Type="datetime" />
+        </EntityType>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBEstadisticas" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="Escolar" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="vwRPTParcial1XALU" EntityType="DBEstadisticas.vwRPTParcial1XALU" />
+          <EntitySet Name="vwRPTParcial1XGPO" EntityType="DBEstadisticas.vwRPTParcial1XGPO" />
+          <EntitySet Name="vwPlanteles" EntityType="DBEstadisticas.vwPlanteles" />
+          <EntitySet Name="Bitacora" EntityType="DBEstadisticas.Bitacora" />
+        </EntityContainer>
+        <EntityType Name="vwRPTParcial1XALU">
+          <Key>
+            <PropertyRef Name="or_zona" />
+            <PropertyRef Name="or_plant" />
+            <PropertyRef Name="or_turno" />
+            <PropertyRef Name="or_semest" />
+            <PropertyRef Name="or_grupo" />
+            <PropertyRef Name="or_matric" />
+            <PropertyRef Name="Ciclo" />
+            <PropertyRef Name="Periodo" />
+          </Key>
+          <Property Name="or_zona" Type="Byte" Nullable="false" />
+          <Property Name="or_plant" Type="Byte" Nullable="false" />
+          <Property Name="or_turno" Type="Byte" Nullable="false" />
+          <Property Name="or_semest" Type="Byte" Nullable="false" />
+          <Property Name="or_grupo" Type="Int32" Nullable="false" />
+          <Property Name="or_matric" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="Ciclo" Type="String" Nullable="false" MaxLength="5" Unicode="false" FixedLength="false" />
+          <Property Name="Periodo" Type="Byte" Nullable="false" />
+          <Property Name="Materias" Type="Byte" Nullable="false" />
+          <Property Name="ReprobadasP1" Type="Byte" Nullable="false" />
+          <Property Name="PromedioP1" Type="Decimal" Nullable="false" />
+          <Property Name="Observaciones" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="NombreAlumno" Type="String" Nullable="false" MaxLength="120" Unicode="false" FixedLength="false" />
+          <Property Name="NombrePlantel" Type="String" Nullable="false" MaxLength="120" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="vwRPTParcial1XGPO">
+          <Key>
+            <PropertyRef Name="or_zona" />
+            <PropertyRef Name="or_plant" />
+            <PropertyRef Name="or_turno" />
+            <PropertyRef Name="or_semest" />
+            <PropertyRef Name="or_grupo" />
+            <PropertyRef Name="or_asigna" />
+            <PropertyRef Name="or_maest" />
+            <PropertyRef Name="Ciclo" />
+            <PropertyRef Name="Periodo" />
+          </Key>
+          <Property Name="or_zona" Type="Byte" Nullable="false" />
+          <Property Name="or_plant" Type="Int32" Nullable="false" />
+          <Property Name="or_turno" Type="Byte" Nullable="false" />
+          <Property Name="or_semest" Type="Byte" Nullable="false" />
+          <Property Name="or_grupo" Type="Int32" Nullable="false" />
+          <Property Name="or_asigna" Type="Int32" Nullable="false" />
+          <Property Name="or_maest" Type="Int64" Nullable="false" />
+          <Property Name="Ciclo" Type="String" Nullable="false" MaxLength="5" Unicode="false" FixedLength="false" />
+          <Property Name="Periodo" Type="Byte" Nullable="false" />
+          <Property Name="Alumnos" Type="Int64" Nullable="false" />
+          <Property Name="Clases" Type="Byte" Nullable="false" />
+          <Property Name="PromAsist" Type="Decimal" Nullable="false" />
+          <Property Name="PromAsig" Type="Decimal" Nullable="false" />
+          <Property Name="Reprobados" Type="Int64" Nullable="false" />
+          <Property Name="NombreAsig" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="NombreMaest" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="NombrePlantel" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="vwPlanteles">
+          <Key>
+            <PropertyRef Name="idZona" />
+            <PropertyRef Name="idPlantel" />
+          </Key>
+          <Property Name="idZona" Type="Int32" Nullable="false" />
+          <Property Name="idPlantel" Type="Int32" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="EsEmsad" Type="SByte" />
+          <Property Name="IdMunicipio" Type="Byte" />
+          <Property Name="Activo" Type="Byte" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Bitacora">
+          <Key>
+            <PropertyRef Name="Z" />
+            <PropertyRef Name="P" />
+            <PropertyRef Name="Ciclo" />
+          </Key>
+          <Property Name="Z" Type="Byte" Nullable="false" />
+          <Property Name="P" Type="Byte" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Registros" Type="Int32" Nullable="false" />
+          <Property Name="Duracion" Type="Double" />
+          <Property Name="Ciclo" Type="String" Nullable="false" MaxLength="5" Unicode="false" FixedLength="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DBEstadisticasStoreContainer" CdmEntityContainer="Escolar">
+          <EntitySetMapping Name="vwRPTParcial1XALU"><EntityTypeMapping TypeName="DBEstadisticas.vwRPTParcial1XALU"><MappingFragment StoreEntitySet="vwRPTParcial1XALU">
+            <ScalarProperty Name="or_zona" ColumnName="or_zona" />
+            <ScalarProperty Name="or_plant" ColumnName="or_plant" />
+            <ScalarProperty Name="or_turno" ColumnName="or_turno" />
+            <ScalarProperty Name="or_semest" ColumnName="or_semest" />
+            <ScalarProperty Name="or_grupo" ColumnName="or_grupo" />
+            <ScalarProperty Name="or_matric" ColumnName="or_matric" />
+            <ScalarProperty Name="Ciclo" ColumnName="Ciclo" />
+            <ScalarProperty Name="Periodo" ColumnName="Periodo" />
+            <ScalarProperty Name="Materias" ColumnName="Materias" />
+            <ScalarProperty Name="ReprobadasP1" ColumnName="ReprobadasP1" />
+            <ScalarProperty Name="PromedioP1" ColumnName="PromedioP1" />
+            <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+            <ScalarProperty Name="NombreAlumno" ColumnName="NombreAlumno" />
+            <ScalarProperty Name="NombrePlantel" ColumnName="NombrePlantel" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="vwRPTParcial1XGPO"><EntityTypeMapping TypeName="DBEstadisticas.vwRPTParcial1XGPO"><MappingFragment StoreEntitySet="vwRPTParcial1XGPO">
+            <ScalarProperty Name="or_zona" ColumnName="or_zona" />
+            <ScalarProperty Name="or_plant" ColumnName="or_plant" />
+            <ScalarProperty Name="or_turno" ColumnName="or_turno" />
+            <ScalarProperty Name="or_semest" ColumnName="or_semest" />
+            <ScalarProperty Name="or_grupo" ColumnName="or_grupo" />
+            <ScalarProperty Name="or_asigna" ColumnName="or_asigna" />
+            <ScalarProperty Name="or_maest" ColumnName="or_maest" />
+            <ScalarProperty Name="Ciclo" ColumnName="Ciclo" />
+            <ScalarProperty Name="Periodo" ColumnName="Periodo" />
+            <ScalarProperty Name="Alumnos" ColumnName="Alumnos" />
+            <ScalarProperty Name="Clases" ColumnName="Clases" />
+            <ScalarProperty Name="PromAsist" ColumnName="PromAsist" />
+            <ScalarProperty Name="PromAsig" ColumnName="PromAsig" />
+            <ScalarProperty Name="Reprobados" ColumnName="Reprobados" />
+            <ScalarProperty Name="NombreAsig" ColumnName="NombreAsig" />
+            <ScalarProperty Name="NombreMaest" ColumnName="NombreMaest" />
+            <ScalarProperty Name="NombrePlantel" ColumnName="NombrePlantel" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="vwPlanteles"><EntityTypeMapping TypeName="DBEstadisticas.vwPlanteles"><MappingFragment StoreEntitySet="vwPlanteles">
+            <ScalarProperty Name="idZona" ColumnName="idZona" />
+            <ScalarProperty Name="idPlantel" ColumnName="idPlantel" />
+            <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+            <ScalarProperty Name="EsEmsad" ColumnName="EsEmsad" />
+            <ScalarProperty Name="IdMunicipio" ColumnName="IdMunicipio" />
+            <ScalarProperty Name="Activo" ColumnName="Activo" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Bitacora"><EntityTypeMapping TypeName="DBEstadisticas.Bitacora"><MappingFragment StoreEntitySet="vwRPTBitacora">
+            <ScalarProperty Name="Z" ColumnName="Z" />
+            <ScalarProperty Name="P" ColumnName="P" />
+            <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+            <ScalarProperty Name="Registros" ColumnName="Registros" />
+            <ScalarProperty Name="Duracion" ColumnName="Duracion" />
+            <ScalarProperty Name="Ciclo" ColumnName="Ciclo" />
+            <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="DBEstadisticas" ZoomLevel="94">
+        <EntityTypeShape EntityType="DBEstadisticas.vwRPTParcial1XALU" Width="1.5" PointX="0.75" PointY="0.75" Height="3.7109993489583326" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBEstadisticas.vwRPTParcial1XGPO" Width="1.5" PointX="2.75" PointY="0.75" Height="4.2879036458333326" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBEstadisticas.vwPlanteles" Width="1.5" PointX="4.75" PointY="0.75" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBEstadisticas.Bitacora" Width="1.5" PointX="5.375" PointY="3.625" Height="2.3648893229166656" IsExpanded="true" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

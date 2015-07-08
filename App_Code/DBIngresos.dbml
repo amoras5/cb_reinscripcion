@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Ingresos_v3" Class="DBIngresosDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=201.165.86.69;Initial Catalog=Ingresos_v3;Persist Security Info=True;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="Ingresos_v3ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Pagos" Member="Pagos">
+    <Type Name="Pago">
+      <Column Name="PagoID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PlantelID" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="AlumnoID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Folio" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Referencia" Type="System.String" DbType="Char(21) NOT NULL" CanBeNull="false" />
+      <Column Name="Total" Type="System.Decimal" DbType="SmallMoney NOT NULL" CanBeNull="false" />
+      <Column Name="Ciclo" Type="System.String" DbType="Char(5) NOT NULL" CanBeNull="false" />
+      <Column Name="Estatus" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="FechaDeAlta" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="FechaDePago" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="TipoDePago" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Comentarios" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Tipo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Pago_DetalleDePago" Member="DetalleDePagos" ThisKey="PagoID" OtherKey="PagoID" Type="DetalleDePago" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DetalleDePagos" Member="DetalleDePagos">
+    <Type Name="DetalleDePago">
+      <Column Name="DetalleID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PagoID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Clave" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="Concepto" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Monto" Type="System.Decimal" DbType="SmallMoney NOT NULL" CanBeNull="false" />
+      <Association Name="Pago_DetalleDePago" Member="Pago" ThisKey="PagoID" OtherKey="PagoID" Type="Pago" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.spEXEGetFolio" Method="spEXEGetFolio">
+    <Parameter Name="Zona" Parameter="zona" Type="System.Byte" DbType="TinyInt" />
+    <Parameter Name="Plantel" Parameter="plantel" Type="System.Byte" DbType="TinyInt" />
+    <Parameter Name="Folio" Parameter="folio" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>
